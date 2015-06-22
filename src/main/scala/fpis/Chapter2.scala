@@ -22,4 +22,9 @@ object Chapter2 extends App {
 
     if (as.size < 2) true else loop(0)
   }
+
+  def curry[A, B, C](f: (A, B) => C): A => (B => C) = {
+    a: A =>
+      b: B => f(a, b)
+  }
 }

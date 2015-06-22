@@ -18,4 +18,9 @@ class Chapter2Test extends FunSuite {
     assert(isSorted[Int](Array(3, 2, 1), _ < _) === false)
     assert(isSorted[Int](Array.empty[Int], _ < _) === true)
   }
+
+  test("Exercise 2.3") {
+    def f(a: Int, b: Int): Int = a - b
+    assert(curry(f)(2)(1) === f(2, 1))
+  }
 }
