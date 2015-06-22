@@ -15,4 +15,8 @@ class Chapter3Test extends FunSuite {
     assert(setHead(List(1, 2, 3, 4), 10) === List(10, 2, 3, 4))
     assert(setHead(Nil, 10) === Nil)
   }
+
+  test("Exercise 3.4") {
+    assert(drop(List(1, 2, 3, 4), 3) === List(4))
+  }
 }

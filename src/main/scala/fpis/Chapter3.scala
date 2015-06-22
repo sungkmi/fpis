@@ -13,4 +13,11 @@ object Chapter3 extends App {
     case Cons(_, tail) => Cons(head, tail)
     case Nil           => Nil
   }
+  
+  @annotation.tailrec
+  def drop[A](l: List[A], n: Int): List[A] = (l, n) match {
+    case (Nil, _) => Nil
+    case (_, 0) => l
+    case (Cons(head, tail), _) => drop(tail, n-1)
+  }
 }
