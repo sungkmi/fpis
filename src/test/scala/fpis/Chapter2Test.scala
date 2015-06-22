@@ -23,4 +23,9 @@ class Chapter2Test extends FunSuite {
     def f(a: Int, b: Int): Int = a - b
     assert(curry(f)(2)(1) === f(2, 1))
   }
+
+  test("Exercise 2.4") {
+    def f(a: Int)(b: Int): Int = a - b
+    assert(uncurry(f)(2, 1) === f(2)(1))
+  }
 }
