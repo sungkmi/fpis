@@ -28,4 +28,10 @@ class Chapter2Test extends FunSuite {
     def f(a: Int)(b: Int): Int = a - b
     assert(uncurry(f)(2, 1) === f(2)(1))
   }
+
+  test("Exercise 2.5") {
+    def f(ch: Char): String = ch.toString
+    def g(i: Int): Char = ('A' to 'Z')(i)    
+    assert(compose(f,g)(2)==="C")
+  }
 }
