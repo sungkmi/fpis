@@ -19,8 +19,12 @@ class Chapter3Test extends FunSuite {
   test("Exercise 3.4") {
     assert(drop(List(1, 2, 3, 4), 3) === List(4))
   }
-  
+
   test("Exercise 3.5") {
     assert(dropWhile[Int](List(1, 2, 3, 4), (_ < 3)) === List(3, 4))
+  }
+
+  test("Exercise 3.6") {
+    assert(init[Int](List(1, 2, 3, 4)) === List(1, 2, 3))
   }
 }
