@@ -28,11 +28,17 @@ class Chapter3Test extends FunSuite {
     assert(init(List(1, 2, 3, 4)) === List(1, 2, 3))
   }
   
-  test("Exercise 3.9") {
+  ignore("Exercise 3.9") {
     assert(length[Int](List(1,2,3)) === 3)
   }
   
   test("Exercise 3.10") {
     assert(foldLeft(List(1,2,3), 0)(_ + _) === 6)
+  }
+  
+  test("Exercise 3.11") {
+    assert(sum(List(1,2,3)) === 6)
+    assert(product(List(1,2,3)) === 6)
+    assert(length(List(1,2,3)) === 3)
   }
 }

@@ -44,12 +44,19 @@ object Chapter3 extends App {
       case Cons(x, xs) => f(x, foldRight(xs, z)(f))
     }
 
-  def length[A](as: List[A]): Int =
-    foldRight(as, 0)((_, count) => count + 1)
-
-  def foldLeft[A, B](as: List[A], z: B)(f: (B, A) => B): B = 
+  def foldLeft[A, B](as: List[A], z: B)(f: (B, A) => B): B =
     as match {
-    case Nil => z
-    case Cons(x, xs) => foldLeft(xs, f(z, x))(f)
-  }
+      case Nil         => z
+      case Cons(x, xs) => foldLeft(xs, f(z, x))(f)
+    }
+
+  def sum(ints: List[Int]): Int = 
+    foldLeft(ints, 0)(_ + _)
+
+  def product(ds: List[Double]): Double =
+    foldLeft(ds, 1.0)(_ * _)
+
+  def length[A](as: List[A]): Int =
+    foldLeft(as, 0)((count, _) => count + 1)
+
 }
