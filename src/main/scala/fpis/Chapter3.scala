@@ -6,18 +6,18 @@ object Chapter3 extends App {
 
   def tail[A](as: List[A]): List[A] = as match {
     case Cons(head, tail) => tail
-    case Nil              => Nil
+    case Nil => Nil
   }
 
   def setHead[A](as: List[A], head: A): List[A] = as match {
     case Cons(_, tail) => Cons(head, tail)
-    case Nil           => Nil
+    case Nil => Nil
   }
 
   @annotation.tailrec
   def drop[A](l: List[A], n: Int): List[A] = (l, n) match {
-    case (Nil, _)              => Nil
-    case (_, 0)                => l
+    case (Nil, _) => Nil
+    case (_, 0) => l
     case (Cons(head, tail), _) => drop(tail, n - 1)
   }
 
@@ -32,7 +32,7 @@ object Chapter3 extends App {
   def init[A](l: List[A]): List[A] = {
     @annotation.tailrec
     def reverse(l: List[A], acc: List[A] = Nil): List[A] = l match {
-      case Nil              => acc
+      case Nil => acc
       case Cons(head, tail) => reverse(tail, Cons(head, acc))
     }
     reverse(tail(reverse(l)))
@@ -40,14 +40,14 @@ object Chapter3 extends App {
 
   def foldRight[A, B](as: List[A], z: B)(f: (A, B) => B): B =
     as match {
-      case Nil         => z
+      case Nil => z
       case Cons(x, xs) => f(x, foldRight(xs, z)(f))
     }
 
   @annotation.tailrec
   def foldLeft[A, B](as: List[A], z: B)(f: (B, A) => B): B =
     as match {
-      case Nil         => z
+      case Nil => z
       case Cons(x, xs) => foldLeft(xs, f(z, x))(f)
     }
 
@@ -89,7 +89,16 @@ object Chapter3 extends App {
 
   def flatMap[A, B](as: List[A])(f: A => List[B]): List[B] =
     flatten(map(as)(f))
-    
+
   def filter2[A](as: List[A])(f: A => Boolean): List[A] =
-    flatMap(as)(a => if(f(a)) List(a) else Nil)
+    flatMap(as)(a => if (f(a)) List(a) else Nil)
+
+  @annotation.tailrec
+  def addEach(as: List[Int], bs: List[Int], acc: List[Int] = Nil): List[Int] =
+    (as, bs) match {
+      case (Nil, Nil) => reverse(acc)
+      case (Nil, _) => append(acc, bs)
+      case (_, Nil) => append(acc, as)
+      case (Cons(a, as), Cons(b, bs)) => addEach(as, bs, Cons(a + b, acc))
+    }
 }
