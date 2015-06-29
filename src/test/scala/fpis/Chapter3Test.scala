@@ -25,6 +25,10 @@ class Chapter3Test extends FunSuite {
   }
 
   test("Exercise 3.6") {
-    assert(init[Int](List(1, 2, 3, 4)) === List(1, 2, 3))
+    assert(init(List(1, 2, 3, 4)) === List(1, 2, 3))
+  }
+  
+  test("Exercise 3.9") {
+    assert(length[Int](List(1,2,3)) === 3)
   }
 }
