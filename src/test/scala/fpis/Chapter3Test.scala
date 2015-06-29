@@ -45,4 +45,8 @@ class Chapter3Test extends FunSuite {
   test("Exercise 3.12") {
     assert(reverse(List(1, 2, 3)) === List(3, 2, 1))
   }
+
+  test("Exercise 3.14") {
+    assert(append(List(1, 2, 3), List(4, 5, 6)) === List(1, 2, 3, 4, 5, 6))
+  }
 }

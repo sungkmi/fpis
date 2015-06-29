@@ -44,13 +44,14 @@ object Chapter3 extends App {
       case Cons(x, xs) => f(x, foldRight(xs, z)(f))
     }
 
+  @annotation.tailrec
   def foldLeft[A, B](as: List[A], z: B)(f: (B, A) => B): B =
     as match {
       case Nil         => z
       case Cons(x, xs) => foldLeft(xs, f(z, x))(f)
     }
 
-  def sum(ints: List[Int]): Int = 
+  def sum(ints: List[Int]): Int =
     foldLeft(ints, 0)(_ + _)
 
   def product(ds: List[Double]): Double =
@@ -59,6 +60,16 @@ object Chapter3 extends App {
   def length[A](as: List[A]): Int =
     foldLeft(as, 0)((count, _) => count + 1)
 
-  def reverse[A](as: List[A]): List[A] = 
-    foldLeft(as, Nil: List[A])((acc, a) => Cons(a, acc))    
+  def reverse[A](as: List[A]): List[A] =
+    foldLeft(as, Nil: List[A])((acc, a) => Cons(a, acc))
+
+  def foldLeft2[A, B](as: List[A], z: B)(f: (B, A) => B): B =
+    foldRight(as, z)((a, b) => f(b, a))
+
+  def foldRight2[A, B](as: List[A], z: B)(f: (A, B) => B): B =
+    foldLeft(as, z)((b, a) => f(a, b))
+    
+  def append[A](as: List[A], bs: List[A]): List[A] = {
+    foldRight(as, bs)((a, acc) => Cons(a, acc) )
+  }
 }
