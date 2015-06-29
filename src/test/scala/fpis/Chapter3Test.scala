@@ -31,4 +31,8 @@ class Chapter3Test extends FunSuite {
   test("Exercise 3.9") {
     assert(length[Int](List(1,2,3)) === 3)
   }
+  
+  test("Exercise 3.10") {
+    assert(foldLeft(List(1,2,3), 0)(_ + _) === 6)
+  }
 }
