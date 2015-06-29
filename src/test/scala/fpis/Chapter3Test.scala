@@ -49,12 +49,20 @@ class Chapter3Test extends FunSuite {
   test("Exercise 3.14") {
     assert(append(List(1, 2, 3), List(4, 5, 6)) === List(1, 2, 3, 4, 5, 6))
   }
-  
+
   test("Exercise 3.15") {
     assert(flatten(List(List(1, 2), List(3, 4))) === List(1, 2, 3, 4))
   }
-  
+
   test("Exercise 3.16") {
     assert(increment(List(1, 2, 3)) === List(2, 3, 4))
+  }
+
+  test("Exercise 3.17") {
+    assert(toStr(List(1.0, 2.0, 3.0)) === List("1.0", "2.0", "3.0"))
+  }
+
+  test("Exercise 3.18") {
+    assert(map(List(1, 2, 3))(_ + 1) === List(2, 3, 4))
   }
 }

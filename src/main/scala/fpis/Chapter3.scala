@@ -77,4 +77,10 @@ object Chapter3 extends App {
 
   def increment(ns: List[Int]): List[Int] =
     foldRight(ns, Nil: List[Int])((n, acc) => Cons(n+1, acc))
+
+  def toStr(ds: List[Double]): List[String] = 
+     foldRight(ds, Nil: List[String])((d, acc) => Cons(d.toString, acc))
+     
+  def map[A,B](as: List[A])(f: A => B): List[B] =
+    foldRight(as, Nil: List[B])((a, acc) => Cons(f(a), acc))
 }
