@@ -65,4 +65,8 @@ class Chapter3Test extends FunSuite {
   test("Exercise 3.18") {
     assert(map(List(1, 2, 3))(_ + 1) === List(2, 3, 4))
   }
+  
+  test("Exercise 3.19") {
+    assert(filter(List(1, 2, 3, 4))(_ % 2 == 0) === List(2, 4))
+  }
 }

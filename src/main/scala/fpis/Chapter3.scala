@@ -76,11 +76,14 @@ object Chapter3 extends App {
     foldRight(lists, Nil: List[A])(append)
 
   def increment(ns: List[Int]): List[Int] =
-    foldRight(ns, Nil: List[Int])((n, acc) => Cons(n+1, acc))
+    foldRight(ns, Nil: List[Int])((n, acc) => Cons(n + 1, acc))
 
-  def toStr(ds: List[Double]): List[String] = 
-     foldRight(ds, Nil: List[String])((d, acc) => Cons(d.toString, acc))
-     
-  def map[A,B](as: List[A])(f: A => B): List[B] =
+  def toStr(ds: List[Double]): List[String] =
+    foldRight(ds, Nil: List[String])((d, acc) => Cons(d.toString, acc))
+
+  def map[A, B](as: List[A])(f: A => B): List[B] =
     foldRight(as, Nil: List[B])((a, acc) => Cons(f(a), acc))
+
+  def filter[A](as: List[A])(f: A => Boolean): List[A] =
+    foldRight(as, Nil: List[A])((a, acc) => if(f(a)) Cons(a, acc) else acc)
 }
