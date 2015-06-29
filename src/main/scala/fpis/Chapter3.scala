@@ -59,4 +59,6 @@ object Chapter3 extends App {
   def length[A](as: List[A]): Int =
     foldLeft(as, 0)((count, _) => count + 1)
 
+  def reverse[A](as: List[A]): List[A] = 
+    foldLeft(as, Nil: List[A])((acc, a) => Cons(a, acc))    
 }
