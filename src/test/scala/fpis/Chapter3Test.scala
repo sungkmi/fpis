@@ -73,5 +73,9 @@ class Chapter3Test extends FunSuite {
   test("Exercise 3.20") {
     assert(flatMap(List(1, 2, 3))(i => List(i, i)) === List(1, 1, 2, 2, 3, 3))
   }
+  
+  test("Exercise 3.21") {
+    assert(filter2(List(1, 2, 3, 4))(_ % 2 == 0) === List(2, 4))
+  }
 
 }

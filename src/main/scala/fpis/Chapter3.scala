@@ -89,4 +89,7 @@ object Chapter3 extends App {
 
   def flatMap[A, B](as: List[A])(f: A => List[B]): List[B] =
     flatten(map(as)(f))
+    
+  def filter2[A](as: List[A])(f: A => Boolean): List[A] =
+    flatMap(as)(a => if(f(a)) List(a) else Nil)
 }
