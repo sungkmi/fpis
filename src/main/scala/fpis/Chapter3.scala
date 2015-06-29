@@ -69,7 +69,9 @@ object Chapter3 extends App {
   def foldRight2[A, B](as: List[A], z: B)(f: (A, B) => B): B =
     foldLeft(as, z)((b, a) => f(a, b))
     
-  def append[A](as: List[A], bs: List[A]): List[A] = {
+  def append[A](as: List[A], bs: List[A]): List[A] = 
     foldRight(as, bs)((a, acc) => Cons(a, acc) )
-  }
+    
+  def flatten[A](lists: List[List[A]]): List[A] = 
+    foldRight(lists, Nil: List[A])(append)
 }
