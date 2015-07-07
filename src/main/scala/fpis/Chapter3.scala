@@ -101,4 +101,12 @@ object Chapter3 extends App {
       case (_, Nil) => append(acc, as)
       case (Cons(a, as), Cons(b, bs)) => addEach(as, bs, Cons(a + b, acc))
     }
+
+  @annotation.tailrec
+  def zipWith[A, B, C](as: List[A], bs: List[B], acc: List[C] = Nil)(f: (A, B) => C): List[C] =
+    (as, bs) match {
+      case (Nil, _) => reverse(acc)
+      case (_, Nil) => reverse(acc)
+      case (Cons(a, as), Cons(b, bs)) => zipWith(as, bs, Cons(f(a, b), acc))(f)
+    }
 }
